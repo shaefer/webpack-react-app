@@ -1,9 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import FormContainer from './js/components/container/FormContainer.jsx';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import reducer from './reducers'
+import App from './App'
+
 
 console.log("hey I started here!");
 
+//LOOKup my saved data store...
 
-const wrapper = document.getElementById("create-article-form");
-wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;
+const store = createStore(
+    reducer
+  )
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById("root")
+)
